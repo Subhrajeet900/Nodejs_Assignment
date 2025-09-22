@@ -1,4 +1,4 @@
-// Load environment variables
+// Load env variables
 require("dotenv").config();
 
 // Import required packages
@@ -10,7 +10,7 @@ const Post = require("./Post");
 
 // Create an Express app
 const app = express();
-app.use(express.json()); // so we can read JSON from requests
+app.use(express.json());
 
 // Setup port and database URI
 const PORT = process.env.PORT || 5000;
@@ -50,5 +50,5 @@ app.get("/posts", async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
