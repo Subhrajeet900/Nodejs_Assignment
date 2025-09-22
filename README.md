@@ -1,4 +1,12 @@
 # Nodejs_Assignment
+# about :
+name - subhrajeet
+
+roll no - 2401350018
+
+course - btech cse (full stack development)
+
+subject - backend devt with nodejs
 
 # Objectives:
 In this project, you will practice working with Mongoose Schemas and Models in Node.js, and expose REST API endpoints for storing and retrieving posts.
@@ -42,11 +50,7 @@ In this project, you will practice working with Mongoose Schemas and Models in N
 ○	Share screenshots of successful request/response for both endpoints.
 
 
-# about :
-name - subhrajeet
-roll no - 2401350018
-course - btech cse (full stack development)
-subject - backend devt with nodejs
+
 
 
 
