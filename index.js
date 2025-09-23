@@ -21,10 +21,21 @@ mongoose.connect(MONGO_URI)
     .then(() => console.log(" MongoDB connected"))
     .catch((err) => console.error(" MongoDB connection error:", err));
 
-// Route: Create a new post
+// Route - Create a new post
 app.post("/posts", async (req, res) => {
+    console.log("Received POST /posts with body:", req.body);
     try {
         const { title, content, author, tags } = req.body;
+        // Manual validation
+        if (!title || title.length < 5) {
+            return res.status(400).json({ error: "Title is required and must be at least 5 characters." });
+        }
+        if (!content || content.length < 20) {
+            return res.status(400).json({ error: "Content is required and must be at least 20 characters." });
+        }
+        if (!author) {
+            return res.status(400).json({ error: "Author is required." });
+        }
 
         // Create a new post document
         const post = new Post({ title, content, author, tags });
@@ -34,7 +45,8 @@ app.post("/posts", async (req, res) => {
 
         res.status(201).json(post);
     } catch (err) {
-        res.status(500).json({ error: "Something went wrong" });
+        console.error("Error creating post:", err); // Debug log
+        res.status(500).json({ error: err.message || "Something went wrong" });
     }
 });
 
@@ -47,6 +59,7 @@ app.get("/posts", async (req, res) => {
         res.status(500).json({ error: "Something went wrong" });
     }
 });
+
 
 // Start server
 app.listen(PORT, () => {
